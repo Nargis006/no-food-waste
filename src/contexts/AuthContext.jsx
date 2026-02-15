@@ -11,8 +11,8 @@ export const ROLES = {
 
 // Mock users for demo
 const MOCK_USERS = [
-  { id: 1, email: 'admin@nofoodwaste.org', password: 'admin123', name: 'Admin User', role: ROLES.ADMIN },
-  { id: 2, email: 'coordinator@nofoodwaste.org', password: 'coord123', name: 'Sarah Coordinator', role: ROLES.COORDINATOR },
+  // { id: 1, email: 'admin@nofoodwaste.org', password: 'admin123', name: 'Admin User', role: ROLES.ADMIN },
+  // { id: 2, email: 'coordinator@nofoodwaste.org', password: 'coord123', name: 'Sarah Coordinator', role: ROLES.COORDINATOR },
   { id: 3, email: 'driver@nofoodwaste.org', password: 'driver123', name: 'John Driver', role: ROLES.DRIVER },
 ];
 

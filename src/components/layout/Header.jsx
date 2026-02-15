@@ -39,7 +39,7 @@ export function Header({ onMenuClick }) {
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
-      <div className="flex items-center justify-between h-16 px-4 lg:px-6">
+      <div className="flex items-center h-16 px-4 lg:px-6">
         {/* Left side - Menu button (mobile) */}
         <button
           onClick={onMenuClick}
@@ -50,12 +50,12 @@ export function Header({ onMenuClick }) {
         </button>
 
         {/* Center - Title (mobile only) */}
-        <h1 className="lg:hidden text-lg font-semibold text-emerald-700">
+        <h1 className="lg:hidden flex-1 text-center text-lg font-semibold text-emerald-700">
           NOFoodWaste
         </h1>
 
-        {/* Right side */}
-        <div className="flex items-center gap-3">
+        {/* Right side - always on the right */}
+        <div className="flex items-center gap-3 ml-auto">
           {/* Notifications */}
           <button className="relative p-2 rounded-lg hover:bg-gray-100">
             <Bell className="w-5 h-5 text-gray-600" />
@@ -88,7 +88,7 @@ export function Header({ onMenuClick }) {
                     {user?.role}
                   </span>
                 </div>
-                <button
+                {/* <button
                   onClick={() => {
                     setDropdownOpen(false);
                     navigate('/settings');
@@ -97,7 +97,7 @@ export function Header({ onMenuClick }) {
                 >
                   <Settings className="w-4 h-4" />
                   Settings
-                </button>
+                </button> */}
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50"

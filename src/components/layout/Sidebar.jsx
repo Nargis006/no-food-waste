@@ -10,7 +10,7 @@ const navigation = [
   { name: 'User Management', href: '/users', icon: Users, roles: [ROLES.ADMIN] },
   { name: 'Assign Pickups', href: '/assign', icon: ClipboardList, roles: [ROLES.ADMIN] },
   { name: 'Analytics', href: '/analytics', icon: BarChart3, roles: [ROLES.ADMIN] },
-  { name: 'Settings', href: '/settings', icon: Settings, roles: [ROLES.ADMIN, ROLES.COORDINATOR, ROLES.DRIVER] },
+  // { name: 'Settings', href: '/settings', icon: Settings, roles: [ROLES.ADMIN, ROLES.COORDINATOR, ROLES.DRIVER] },
 ];
 
 export function Sidebar({ isOpen, onClose }) {

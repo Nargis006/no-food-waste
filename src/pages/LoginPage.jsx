@@ -33,8 +33,8 @@ export function LoginPage() {
   };
 
   const demoAccounts = [
-    { email: 'admin@nofoodwaste.org', password: 'admin123', role: 'Admin' },
-    { email: 'coordinator@nofoodwaste.org', password: 'coord123', role: 'Coordinator' },
+    // { email: 'admin@nofoodwaste.org', password: 'admin123', role: 'Admin' },
+    // { email: 'coordinator@nofoodwaste.org', password: 'coord123', role: 'Coordinator' },
     { email: 'driver@nofoodwaste.org', password: 'driver123', role: 'Driver' },
   ];
 
