@@ -3,7 +3,7 @@ import { Modal, Button, showToast } from '../common';
 import { PickupForm } from './PickupForm';
 import { VoiceInputPanel } from './VoiceInputPanel';
 import { Timeline } from './Timeline';
-import { MapPin, Building2, Truck, Clock, Phone, User } from 'lucide-react';
+import { MapPin, Building2, Truck, Clock, Phone, User, Mic, FileText } from 'lucide-react';
 
 export function PickupDetailModal({ isOpen, onClose, assignment, onStatusUpdate }) {
   const [formData, setFormData] = useState({
@@ -17,6 +17,7 @@ export function PickupDetailModal({ isOpen, onClose, assignment, onStatusUpdate 
   });
   const [images, setImages] = useState([]);
   const [submitting, setSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState('form'); // 'form' or 'voice' for mobile
 
   if (!assignment) return null;
 
@@ -86,9 +87,38 @@ export function PickupDetailModal({ isOpen, onClose, assignment, onStatusUpdate 
       title="Pickup Details"
       size="full"
     >
-      <div className="flex flex-col lg:flex-row h-[calc(90vh-80px)]">
+      {/* Mobile Tab Switcher - Only visible on small screens when form is editable */}
+      {canSubmit && (
+        <div className="lg:hidden flex border-b border-gray-200 bg-gray-50">
+          <button
+            onClick={() => setActiveTab('form')}
+            className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors
+              ${activeTab === 'form' 
+                ? 'text-emerald-600 border-b-2 border-emerald-600 bg-white' 
+                : 'text-gray-500 hover:text-gray-700'
+              }`}
+          >
+            <FileText className="w-4 h-4" />
+            Fill Form
+          </button>
+          <button
+            onClick={() => setActiveTab('voice')}
+            className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors
+              ${activeTab === 'voice' 
+                ? 'text-emerald-600 border-b-2 border-emerald-600 bg-white' 
+                : 'text-gray-500 hover:text-gray-700'
+              }`}
+          >
+            <Mic className="w-4 h-4" />
+            Voice Input
+          </button>
+        </div>
+      )}
+
+      <div className="flex flex-col lg:flex-row h-[calc(90vh-120px)] lg:h-[calc(90vh-80px)]">
         {/* Left Side - Form or Details */}
-        <div className="flex-1 overflow-y-auto p-6 border-r border-gray-200">
+        <div className={`flex-1 overflow-y-auto p-4 sm:p-6 lg:border-r border-gray-200
+          ${activeTab === 'form' ? 'block' : 'hidden'} lg:block`}>
           {/* Assignment Info Header */}
           <div className="mb-6 pb-6 border-b border-gray-200">
             <div className="flex items-start justify-between mb-4">
@@ -206,10 +236,12 @@ export function PickupDetailModal({ isOpen, onClose, assignment, onStatusUpdate 
         </div>
 
         {/* Right Side - Voice Input Panel */}
-        <div className="w-full lg:w-96 bg-gray-50 p-6 overflow-y-auto">
+        <div className={`w-full lg:w-96 bg-gray-50 p-4 sm:p-6 overflow-y-auto
+          ${activeTab === 'voice' ? 'block' : 'hidden'} lg:block`}>
           <VoiceInputPanel
             onDataParsed={handleVoiceDataParsed}
             disabled={!canSubmit}
+            onComplete={() => setActiveTab('form')} // Switch to form after voice processing on mobile
           />
         </div>
       </div>

@@ -39,19 +39,19 @@ export function PickupForm({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-6">
       {/* Notice */}
-      <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
-        <p className="text-sm text-amber-800">
+      <div className="p-3 lg:p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p className="text-xs lg:text-sm text-amber-800">
           <strong>Important:</strong> Please fill this form BEFORE physically
-          picking up the food. All fields marked with * are required.
+          picking up the food. Fields marked with * are required.
         </p>
       </div>
 
       {/* Pickup Confirmation Section */}
       <div>
-        <h4 className="font-medium text-gray-900 mb-4">Pickup Confirmation</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h4 className="font-medium text-gray-900 mb-3 lg:mb-4 text-sm lg:text-base">Pickup Confirmation</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
           <Input
             label="Food Name *"
             placeholder="e.g., Rice, Dal, Vegetables"
@@ -88,8 +88,8 @@ export function PickupForm({
 
       {/* Delivery Section */}
       <div>
-        <h4 className="font-medium text-gray-900 mb-4">Delivery Details</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h4 className="font-medium text-gray-900 mb-3 lg:mb-4 text-sm lg:text-base">Delivery Details</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
           <Input
             label="Hunger Spot Name"
             value={formData.hungerSpotName}
@@ -111,8 +111,8 @@ export function PickupForm({
 
       {/* Vehicle Section (Read Only) */}
       <div>
-        <h4 className="font-medium text-gray-900 mb-4">Vehicle Information</h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <h4 className="font-medium text-gray-900 mb-3 lg:mb-4 text-sm lg:text-base">Vehicle Information</h4>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
           <Input
             label="Vehicle Number"
             value={vehicleInfo.number}
@@ -136,11 +136,11 @@ export function PickupForm({
 
       {/* Image Upload */}
       <div>
-        <h4 className="font-medium text-gray-900 mb-4">Image Upload</h4>
+        <h4 className="font-medium text-gray-900 mb-3 lg:mb-4 text-sm lg:text-base">Image Upload</h4>
         <div
           {...getRootProps()}
           className={`
-            border-2 border-dashed rounded-lg p-6 text-center cursor-pointer
+            border-2 border-dashed rounded-lg p-4 lg:p-6 text-center cursor-pointer
             transition-colors
             ${
               isDragActive
@@ -150,16 +150,16 @@ export function PickupForm({
           `}
         >
           <input {...getInputProps()} />
-          <Upload className="w-10 h-10 text-gray-400 mx-auto mb-2" />
+          <Upload className="w-8 h-8 lg:w-10 lg:h-10 text-gray-400 mx-auto mb-2" />
           {isDragActive ? (
-            <p className="text-emerald-600">Drop the images here...</p>
+            <p className="text-emerald-600 text-sm">Drop the images here...</p>
           ) : (
             <>
-              <p className="text-gray-600">
-                Drag & drop images here, or click to select
+              <p className="text-gray-600 text-sm">
+                Tap to upload or drag images
               </p>
               <p className="text-xs text-gray-400 mt-1">
-                Max 5 images, 5MB each (JPEG, PNG, WebP)
+                Max 5 images, 5MB each
               </p>
             </>
           )}
@@ -167,20 +167,20 @@ export function PickupForm({
 
         {/* Image Previews */}
         {images.length > 0 && (
-          <div className="mt-4 grid grid-cols-3 md:grid-cols-5 gap-2">
+          <div className="mt-3 grid grid-cols-4 md:grid-cols-5 gap-2">
             {images.map((file, index) => (
               <div key={index} className="relative group">
                 <img
                   src={URL.createObjectURL(file)}
                   alt={`Upload ${index + 1}`}
-                  className="w-full h-20 object-cover rounded-lg"
+                  className="w-full h-16 lg:h-20 object-cover rounded-lg"
                 />
                 <button
                   type="button"
                   onClick={() => removeImage(index)}
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute -top-1 -right-1 w-5 h-5 lg:w-6 lg:h-6 bg-red-500 text-white rounded-full flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-3 h-3 lg:w-4 lg:h-4" />
                 </button>
               </div>
             ))}
