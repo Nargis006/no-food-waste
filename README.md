@@ -237,4 +237,4 @@ See `src/services/googleDriveUpload.js` and `src/services/voiceToText.js` for de
 
 ## License
 
-MIT
+NoFoodWaste
