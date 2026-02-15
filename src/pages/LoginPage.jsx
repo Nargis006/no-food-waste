@@ -14,6 +14,7 @@ export function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    console.log('Login attempt with:', { email, password });
     e.preventDefault();
     setError('');
     setLoading(true);
