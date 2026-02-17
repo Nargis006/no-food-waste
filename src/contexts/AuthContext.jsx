@@ -11,8 +11,8 @@ export const ROLES = {
 
 // Mock users for demo
 const MOCK_USERS = [
-  // { id: 1, email: 'admin@nofoodwaste.org', password: 'admin123', name: 'Admin User', role: ROLES.ADMIN },
-  // { id: 2, email: 'coordinator@nofoodwaste.org', password: 'coord123', name: 'Sarah Coordinator', role: ROLES.COORDINATOR },
+  { id: 1, email: 'admin@nofoodwaste.org', password: 'admin123', name: 'Admin User', role: ROLES.ADMIN },
+  { id: 2, email: 'coordinator@nofoodwaste.org', password: 'coord123', name: 'Sarah Coordinator', role: ROLES.COORDINATOR },
   { id: 3, email: 'driver@nofoodwaste.org', password: 'driver123', name: 'John Driver', role: ROLES.DRIVER },
 ];
 
@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
+    console.log('Login attempt with:', { email, password });
     // Simulate API call
     const foundUser = MOCK_USERS.find(
       (u) => u.email === email && u.password === password
